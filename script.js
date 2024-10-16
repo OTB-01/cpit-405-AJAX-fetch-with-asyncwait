@@ -12,7 +12,7 @@ btnFetch.addEventListener("click", function () {
     fetchWheather(searchText.value)
 });
 
-// fetch with async and await Example
+// fetch with asyncawait
 async function fetchWheather(keyword) {
     var url = "https://api.weatherapi.com/v1/forecast.json";
 
@@ -27,13 +27,12 @@ async function fetchWheather(keyword) {
 
     const response = await fetch(url + "?" + params, requestOptions); // Wait until the request completes.
     const data = await response.json(); // waits until the response completes
-    console.log(` json object ${data}`);
+    
     processResponse(data);
 }
 
 function processResponse(respObj) {
-    console.log(` proccesing response ${respObj.data}`);
-
+    
     let nameElem = document.createElement("p");
     nameElem.innerHTML = respObj.location.name;
     searchResults.appendChild(nameElem);
@@ -45,6 +44,5 @@ function processResponse(respObj) {
     let condition = document.createElement("p");
     condition.innerHTML = respObj.current.condition.text;
     searchResults.appendChild(condition);
-
 
 }
